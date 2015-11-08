@@ -8,6 +8,8 @@ textAngular.config([function(){
 }]);
 
 textAngular.run([function(){
+  // don't init in iframe, due to firefox/rangy iframe bug
+  if(self === top) {
 	/* istanbul ignore next: not sure how to test this */
 	// Require Rangy and rangy savedSelection module.
 	if (typeof define === 'function' && define.amd) {
@@ -32,6 +34,7 @@ textAngular.run([function(){
 			}
 		}
 	}
+  }
 }]);
 
 textAngular.directive("textAngular", [
